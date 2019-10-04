@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-  compileSdkVersion buildConfig.compileSdk
+  compileSdkVersion buildConfig.appCompileSdk
   defaultConfig {
     applicationId "work.kcs_labo.yumemitodoapp"
     minSdkVersion buildConfig.minSdk
@@ -36,4 +36,12 @@ dependencies {
   testImplementation "junit:junit:${versions.junit}"
   androidTestImplementation "androidx.test:runner:${versions.runner}"
   androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso_core}"
+
+  // ViewModel and LiveData
+  implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+  kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}"
+
+  // Room
+  implementation "androidx.room:room-runtime:${versions.room}"
+  kapt "androidx.room:room-compiler:${versions.room}"
 }
