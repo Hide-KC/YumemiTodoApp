@@ -6,6 +6,10 @@ import work.kcs_labo.yumemitodoapp.data.source.local.TasksLocalDataSource
 class TasksRepository(
   private val tasksLocalDataSource: TasksLocalDataSource
 ): TasksDataSource {
+  override fun findAll(): List<Task> {
+    return tasksLocalDataSource.findAll()
+  }
+
   override fun find(taskName: String): List<Task> {
     return tasksLocalDataSource.find(taskName)
   }

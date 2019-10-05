@@ -25,6 +25,11 @@ android {
   dataBinding {
     enabled = true
   }
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+  }
 }
 
 dependencies {
@@ -34,8 +39,9 @@ dependencies {
   implementation "androidx.core:core-ktx:${versions.core_ktx}"
   implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
   testImplementation "junit:junit:${versions.junit}"
-  androidTestImplementation "androidx.test:runner:${versions.runner}"
-  androidTestImplementation "org.robolectric:robolectric:${versions.robolectric}"
+  testImplementation "org.assertj:assertj-core:${versions.assertj_core}"
+  testImplementation "androidx.test:runner:${versions.runner}"
+  testImplementation "org.robolectric:robolectric:${versions.robolectric}"
   androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso_core}"
 
   // ViewModel and LiveData

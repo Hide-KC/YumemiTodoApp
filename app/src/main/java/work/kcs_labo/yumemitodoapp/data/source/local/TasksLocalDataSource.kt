@@ -4,6 +4,10 @@ import work.kcs_labo.yumemitodoapp.data.Task
 import work.kcs_labo.yumemitodoapp.data.source.TasksDataSource
 
 class TasksLocalDataSource(private val tasksDao: TasksDao) : TasksDataSource {
+  override fun findAll(): List<Task> {
+    return tasksDao.findAll()
+  }
+
   override fun find(taskName: String): List<Task> {
     return tasksDao.find("%$taskName%")
   }
