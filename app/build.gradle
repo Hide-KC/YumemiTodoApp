@@ -38,6 +38,7 @@ dependencies {
   implementation "androidx.appcompat:appcompat:${versions.appcompat}"
   implementation "androidx.core:core-ktx:${versions.core_ktx}"
   implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+  implementation "com.google.android.material:material:${versions.material}"
   testImplementation "junit:junit:${versions.junit}"
   testImplementation "org.assertj:assertj-core:${versions.assertj_core}"
   testImplementation "androidx.test:runner:${versions.runner}"
