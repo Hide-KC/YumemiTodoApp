@@ -35,6 +35,7 @@ dependencies {
   implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
   testImplementation "junit:junit:${versions.junit}"
   androidTestImplementation "androidx.test:runner:${versions.runner}"
+  androidTestImplementation "org.robolectric:robolectric:${versions.robolectric}"
   androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso_core}"
 
   // ViewModel and LiveData
