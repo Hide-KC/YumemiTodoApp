@@ -5,31 +5,31 @@ import work.kcs_labo.yumemitodoapp.data.source.TasksDataSource
 
 class TasksLocalDataSource(private val tasksDao: TasksDao) : TasksDataSource {
   override fun find(taskName: String): List<Task> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    return tasksDao.find("%$taskName%")
   }
 
   override fun findCompleted(): List<Task> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    return tasksDao.findCompleted()
   }
 
   override fun findActive(): List<Task> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    return tasksDao.findActive()
   }
 
   override fun insert(task: Task) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    tasksDao.insert(task)
   }
 
   override fun update(task: Task) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    tasksDao.update(task)
   }
 
   override fun delete(task: Task) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    tasksDao.delete(task)
   }
 
   override fun deleteAll() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    tasksDao.deleteAll()
   }
 
   companion object {
