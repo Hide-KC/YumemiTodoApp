@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import work.kcs_labo.yumemitodoapp.data.Task
 
-@Database(entities = [Task::class], version = 1)
+@Database(entities = [Task::class], version = 1, exportSchema = false)
 abstract class TasksDatabase : RoomDatabase() {
   abstract fun tasksDao(): TasksDao
 
