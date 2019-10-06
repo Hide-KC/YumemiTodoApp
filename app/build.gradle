@@ -39,6 +39,7 @@ dependencies {
   implementation "androidx.core:core-ktx:${versions.core_ktx}"
   implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
   implementation "com.google.android.material:material:${versions.material}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines_core}"
   testImplementation "junit:junit:${versions.junit}"
   testImplementation "org.assertj:assertj-core:${versions.assertj_core}"
   testImplementation "androidx.test:runner:${versions.runner}"
@@ -47,6 +48,7 @@ dependencies {
 
   // ViewModel and LiveData
   implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle_viewmodel}"
   kapt "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}"
 
   // Room
