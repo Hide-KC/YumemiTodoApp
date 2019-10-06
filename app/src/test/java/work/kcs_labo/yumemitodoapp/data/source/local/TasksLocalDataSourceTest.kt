@@ -41,7 +41,7 @@ class TasksLocalDataSourceTest {
   }
 
   @Test
-  fun find() {
+  fun findByName() {
     var list = tasksLocalDataSource.find("task")
     assertThat(list).isEmpty()
 
@@ -53,6 +53,21 @@ class TasksLocalDataSourceTest {
     assertThat(list).hasSize(1)
     list = tasksLocalDataSource.find("task")
     assertThat(list).hasSize(3)
+  }
+
+  @Test
+  fun findById() {
+    var list = tasksLocalDataSource.find("task")
+    assertThat(list).isEmpty()
+
+    tasksLocalDataSource.insert(Task(1, "task0", false.toString()))
+    tasksLocalDataSource.insert(Task(2, "task1", false.toString()))
+    tasksLocalDataSource.insert(Task(3, "task2", false.toString()))
+
+    var task = tasksLocalDataSource.find(1)
+    assertThat(task.id).isEqualTo(1)
+    task = tasksLocalDataSource.find(10)
+    assertThat(task).isNull()
   }
 
   @Test
