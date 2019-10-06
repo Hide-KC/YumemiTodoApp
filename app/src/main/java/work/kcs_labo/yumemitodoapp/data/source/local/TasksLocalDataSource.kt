@@ -12,6 +12,10 @@ class TasksLocalDataSource(private val tasksDao: TasksDao) : TasksDataSource {
     return tasksDao.find("%$taskName%")
   }
 
+  override fun find(id: Long): Task {
+    return tasksDao.find(id)
+  }
+
   override fun findCompleted(): List<Task> {
     return tasksDao.findCompleted()
   }
@@ -24,16 +28,16 @@ class TasksLocalDataSource(private val tasksDao: TasksDao) : TasksDataSource {
     tasksDao.insert(task)
   }
 
-  override fun update(task: Task) {
-    tasksDao.update(task)
+  override fun update(task: Task): Int {
+    return tasksDao.update(task)
   }
 
-  override fun delete(task: Task) {
-    tasksDao.delete(task)
+  override fun delete(task: Task): Int {
+    return tasksDao.delete(task)
   }
 
-  override fun deleteAll() {
-    tasksDao.deleteAll()
+  override fun deleteAll(): Int {
+    return tasksDao.deleteAll()
   }
 
   companion object {

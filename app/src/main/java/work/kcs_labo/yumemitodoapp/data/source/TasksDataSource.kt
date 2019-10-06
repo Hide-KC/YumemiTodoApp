@@ -5,10 +5,11 @@ import work.kcs_labo.yumemitodoapp.data.Task
 interface TasksDataSource {
   fun findAll(): List<Task>
   fun find(taskName: String): List<Task>
+  fun find(id: Long): Task
   fun findCompleted(): List<Task>
   fun findActive(): List<Task>
   fun insert(task: Task)
-  fun update(task: Task)
-  fun delete(task: Task)
-  fun deleteAll()
+  fun update(task: Task): Int
+  fun delete(task: Task): Int
+  fun deleteAll(): Int
 }

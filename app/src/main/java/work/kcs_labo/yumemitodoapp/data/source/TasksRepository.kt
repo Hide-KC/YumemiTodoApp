@@ -14,6 +14,10 @@ class TasksRepository(
     return tasksLocalDataSource.find(taskName)
   }
 
+  override fun find(id: Long): Task {
+    return tasksLocalDataSource.find(id)
+  }
+
   override fun findCompleted(): List<Task> {
     return tasksLocalDataSource.findCompleted()
   }
@@ -26,16 +30,16 @@ class TasksRepository(
     tasksLocalDataSource.insert(task)
   }
 
-  override fun update(task: Task) {
-    tasksLocalDataSource.update(task)
+  override fun update(task: Task): Int {
+    return tasksLocalDataSource.update(task)
   }
 
-  override fun delete(task: Task) {
-    tasksLocalDataSource.delete(task)
+  override fun delete(task: Task): Int {
+    return tasksLocalDataSource.delete(task)
   }
 
-  override fun deleteAll() {
-    tasksLocalDataSource.deleteAll()
+  override fun deleteAll(): Int {
+    return tasksLocalDataSource.deleteAll()
   }
 
   companion object {
