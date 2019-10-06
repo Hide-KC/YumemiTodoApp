@@ -20,7 +20,8 @@
       android:id="@+id/toolbar"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:background="?attr/colorPrimary"
+      android:background="@color/colorPrimary"
+      app:titleTextColor="@android:color/white"
       android:minHeight="?attr/actionBarSize"
       android:theme="?attr/actionBarTheme"
       app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +49,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
       android:layout_marginEnd="8dp"
-      android:background="@drawable/add_btn"
+      android:background="@drawable/add_btn_background"
       android:text="@string/add"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -93,11 +94,13 @@
       app:layout_constraintStart_toEndOf="@+id/all_btn"
       bind:btnState="@{viewModel.activeBtnEnable}" />
 
-    <FrameLayout
+    <ListView
+      android:id="@+id/tasks"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginTop="8dp"
       android:layout_marginBottom="8dp"
+      bind:taskmodels="@{viewModel.taskModelsLiveData}"
       app:layout_constraintBottom_toTopOf="@+id/active_btn"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"

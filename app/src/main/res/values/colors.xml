@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#008577</color>
-  <color name="colorPrimaryDark">#00574B</color>
-  <color name="colorAccent">#D81B60</color>
-  <color name="stateBtnColor">#56ffaa</color>
-  <color name="addBtnColor">#56ffff</color>
+  <color name="colorPrimary">#6abc6e</color>
+  <color name="colorPrimaryDark">#675f80</color>
+  <color name="colorAccent">#d45734</color>
+  <color name="colorAssort">#d7b291</color>
 </resources>

@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content">
+  xmlns:tools="http://schemas.android.com/tools">
 
-  <CheckBox
-    android:id="@+id/checkBox"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/item_margin_horizontal"
-    android:layout_marginTop="@dimen/item_margin_vertical"
-    android:layout_marginBottom="@dimen/item_margin_vertical"
-    android:scaleX="1.5"
-    android:scaleY="1.5"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+  <data>
+    <variable
+      name="taskmodel"
+      type="work.kcs_labo.yumemitodoapp.list.TaskModel" />
+  </data>
 
-  <TextView
-    android:id="@+id/textView"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/item_margin_horizontal"
-    android:layout_marginEnd="@dimen/item_margin_horizontal"
-    android:text="task0"
-    android:textSize="@dimen/task_text_size"
-    app:layout_constraintBottom_toBottomOf="@+id/checkBox"
-    app:layout_constraintEnd_toStartOf="@+id/imageView"
-    app:layout_constraintStart_toEndOf="@+id/checkBox"
-    app:layout_constraintTop_toTopOf="@+id/checkBox" />
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-  <ImageView
-    android:id="@+id/imageView"
-    android:layout_width="48dp"
-    android:layout_height="0dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="@dimen/item_margin_horizontal"
-    android:layout_marginBottom="4dp"
-    android:scaleX="0.6"
-    android:scaleY="0.6"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <CheckBox
+      android:id="@+id/checkBox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/item_margin_horizontal"
+      android:layout_marginTop="@dimen/item_margin_vertical"
+      android:layout_marginBottom="@dimen/item_margin_vertical"
+      android:scaleX="1.5"
+      android:scaleY="1.5"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/textView"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/item_margin_horizontal"
+      android:layout_marginEnd="@dimen/item_margin_horizontal"
+      android:text="@{taskmodel.task.name}"
+      android:textSize="@dimen/task_text_size"
+      app:layout_constraintBottom_toBottomOf="@+id/checkBox"
+      app:layout_constraintEnd_toStartOf="@+id/imageView"
+      app:layout_constraintStart_toEndOf="@+id/checkBox"
+      app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+    <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="48dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="4dp"
+      android:layout_marginEnd="@dimen/item_margin_horizontal"
+      android:layout_marginBottom="4dp"
+      android:scaleX="0.6"
+      android:scaleY="0.6"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
