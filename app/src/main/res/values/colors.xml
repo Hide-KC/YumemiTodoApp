@@ -4,4 +4,6 @@
   <color name="colorPrimaryDark">#675f80</color>
   <color name="colorAccent">#d45734</color>
   <color name="colorAssort">#d7b291</color>
+  <color name="activeTaskBackground">#fffcda</color>
+  <color name="completedTaskBackground">#d45734</color>
 </resources>

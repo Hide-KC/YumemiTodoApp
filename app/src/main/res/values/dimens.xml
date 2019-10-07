@@ -3,4 +3,7 @@
   <dimen name="task_text_size">20sp</dimen>
   <dimen name="item_margin_vertical">16dp</dimen>
   <dimen name="item_margin_horizontal">16dp</dimen>
+  <dimen name="task_state_text_size">12sp</dimen>
+  <dimen name="task_state_padding_vertical">2dp</dimen>
+  <dimen name="task_state_padding_horizontal">4dp</dimen>
 </resources>

@@ -1,9 +1,12 @@
 package work.kcs_labo.yumemitodoapp.util
 
 
+import android.graphics.Color
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ListView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import work.kcs_labo.yumemitodoapp.R
 import work.kcs_labo.yumemitodoapp.list.TaskModel
@@ -28,5 +31,23 @@ fun ListView.setTaskModels(taskModels: List<TaskModel>?) {
       it.addAll(taskModels)
     }
     adapter.notifyDataSetChanged()
+  }
+}
+
+@BindingAdapter("bind:isCompleted")
+fun CheckBox.setTaskState(isCompleted: String?) {
+  if (isCompleted == true.toString()) {
+    this.isChecked = true
+  }
+}
+
+@BindingAdapter("bind:isCompleted")
+fun TextView.setTaskState(isCompleted: String?) {
+  if (isCompleted == true.toString()) {
+    background = resources.getDrawable(R.drawable.state_textview_completed, null)
+    text = resources.getText(R.string.completed)
+  } else {
+    background = resources.getDrawable(R.drawable.state_textview_active, null)
+    text = resources.getText(R.string.active)
   }
 }

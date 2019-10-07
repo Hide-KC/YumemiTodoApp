@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:bind="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
 
   <data>
@@ -17,14 +18,11 @@
       android:id="@+id/checkBox"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/item_margin_horizontal"
+      android:layout_marginStart="20dp"
       android:layout_marginTop="@dimen/item_margin_vertical"
-      android:layout_marginBottom="@dimen/item_margin_vertical"
-      android:scaleX="1.5"
-      android:scaleY="1.5"
-      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      bind:isCompleted="@{taskmodel.task.isCompleted}" />
 
     <TextView
       android:id="@+id/textView"
@@ -34,10 +32,10 @@
       android:layout_marginEnd="@dimen/item_margin_horizontal"
       android:text="@{taskmodel.task.name}"
       android:textSize="@dimen/task_text_size"
-      app:layout_constraintBottom_toBottomOf="@+id/checkBox"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toStartOf="@+id/imageView"
       app:layout_constraintStart_toEndOf="@+id/checkBox"
-      app:layout_constraintTop_toTopOf="@+id/checkBox" />
+      app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
       android:id="@+id/imageView"
@@ -52,5 +50,25 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <TextView
+      android:id="@+id/textView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+      android:layout_marginBottom="4dp"
+      android:background="@drawable/state_textview_active"
+      android:paddingLeft="@dimen/task_state_padding_horizontal"
+      android:paddingTop="@dimen/task_state_padding_vertical"
+      android:paddingRight="@dimen/task_state_padding_horizontal"
+      android:paddingBottom="@dimen/task_state_padding_vertical"
+      android:text="@string/active"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/task_state_text_size"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/checkBox"
+      app:layout_constraintStart_toStartOf="@+id/checkBox"
+      app:layout_constraintTop_toBottomOf="@+id/checkBox"
+      bind:isCompleted="@{taskmodel.task.isCompleted}" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
