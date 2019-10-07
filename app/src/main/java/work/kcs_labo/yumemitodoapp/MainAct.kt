@@ -13,6 +13,11 @@ import work.kcs_labo.yumemitodoapp.list.TasksAdapter
 import work.kcs_labo.yumemitodoapp.util.obtainViewModel
 
 class MainAct : AppCompatActivity(), MainNavigator {
+  override fun onCheckStateChanged(task: Task) {
+    val viewModel = obtainViewModel()
+    viewModel.updateTask(task)
+  }
+
   override fun onTaskClick(task: Task) {
     Log.d(this.javaClass.simpleName, "onTaskClick")
   }

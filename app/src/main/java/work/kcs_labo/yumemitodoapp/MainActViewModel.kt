@@ -100,6 +100,7 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
     GlobalScope.launch {
       withContext(Dispatchers.IO) {
         repository.update(task)
+        loadTasks()
       }
     }
   }

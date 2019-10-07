@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.RadioGroup
 import androidx.databinding.DataBindingUtil
+import work.kcs_labo.yumemitodoapp.data.Task
 import work.kcs_labo.yumemitodoapp.databinding.TaskItemBinding
 
 class TasksAdapter(context: Context, private val layoutId: Int, val taskModels: MutableList<TaskModel>) : ArrayAdapter<TaskModel>(context, layoutId, taskModels) {
@@ -28,6 +30,7 @@ class TasksAdapter(context: Context, private val layoutId: Int, val taskModels: 
       }
 
     setupListener(position)
+    initItem(position)
 
     return binding.root
   }
@@ -37,8 +40,20 @@ class TasksAdapter(context: Context, private val layoutId: Int, val taskModels: 
     binding.root.setOnClickListener {
       taskModel.taskClick(taskModel.task)
     }
+
     binding.imageView.setOnClickListener {
       taskModel.deleteClick(taskModel.task)
     }
+
+    binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+      taskModel.checkBoxClick(Task(taskModel.task.id, taskModel.task.name, isChecked.toString()))
+    }
   }
+
+  private fun initItem(position: Int) {
+    val taskModel = taskModels[position]
+
+    binding.checkBox.isChecked = taskModel.task.isCompleted == true.toString()
+  }
+
 }

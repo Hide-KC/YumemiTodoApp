@@ -4,5 +4,6 @@ import work.kcs_labo.yumemitodoapp.data.Task
 
 interface MainNavigator {
   fun onTaskClick(task: Task)
+  fun onCheckStateChanged(task: Task)
   fun onDeleteClick(task: Task)
 }
