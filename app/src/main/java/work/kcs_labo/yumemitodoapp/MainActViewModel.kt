@@ -1,15 +1,16 @@
 package work.kcs_labo.yumemitodoapp
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import work.kcs_labo.yumemitodoapp.data.Task
 import work.kcs_labo.yumemitodoapp.data.source.TasksRepository
 import work.kcs_labo.yumemitodoapp.list.TaskModel
-import java.lang.IllegalStateException
 
 class MainActViewModel(app: Application, private val repository: TasksRepository) :
   AndroidViewModel(app) {
@@ -47,7 +48,7 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
     loadTasks()
   }
 
-  fun setNavigator(navigator: MainNavigator?){
+  fun setNavigator(navigator: MainNavigator?) {
     this.navigator = navigator
   }
 
@@ -75,7 +76,7 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
   }
 
   fun addTask(taskName: String) {
-    if(taskName.trim().isNotEmpty()) {
+    if (taskName.trim().isNotEmpty()) {
       GlobalScope.launch {
         withContext(Dispatchers.IO) {
           val task = Task(0, taskName, false.toString())
@@ -91,6 +92,15 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
       withContext(Dispatchers.IO) {
         val task = repository.find(id)
         repository.delete(task)
+        loadTasks()
+      }
+    }
+  }
+
+  fun deleteCompleted() {
+    GlobalScope.launch {
+      withContext(Dispatchers.IO) {
+        repository.deleteCompleted()
         loadTasks()
       }
     }

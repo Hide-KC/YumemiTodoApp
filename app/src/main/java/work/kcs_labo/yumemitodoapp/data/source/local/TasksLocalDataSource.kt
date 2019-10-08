@@ -36,6 +36,10 @@ class TasksLocalDataSource(private val tasksDao: TasksDao) : TasksDataSource {
     return tasksDao.delete(task)
   }
 
+  override fun deleteCompleted(): Int {
+    return tasksDao.deleteCompleted()
+  }
+
   override fun deleteAll(): Int {
     return tasksDao.deleteAll()
   }

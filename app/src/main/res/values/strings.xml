@@ -5,4 +5,7 @@
   <string name="active">Active</string>
   <string name="completed">Completed</string>
   <string name="task_hint">NewTask?</string>
+  <string name="delete_completed">完了タスクの削除</string>
+  <string name="delete_completed_msg">完了タスクを削除します</string>
+  <string name="fix_task_title">タスクの修正</string>
 </resources>

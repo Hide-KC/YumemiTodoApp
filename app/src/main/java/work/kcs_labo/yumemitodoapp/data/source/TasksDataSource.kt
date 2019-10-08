@@ -11,5 +11,6 @@ interface TasksDataSource {
   fun insert(task: Task)
   fun update(task: Task): Int
   fun delete(task: Task): Int
+  fun deleteCompleted(): Int
   fun deleteAll(): Int
 }

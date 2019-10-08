@@ -3,7 +3,8 @@ package work.kcs_labo.yumemitodoapp.data.source.local
 import androidx.room.*
 import work.kcs_labo.yumemitodoapp.data.Task
 
-@Dao interface TasksDao {
+@Dao
+interface TasksDao {
   @Query("SELECT * FROM tasks")
   fun findAll(): List<Task>
 
@@ -30,4 +31,7 @@ import work.kcs_labo.yumemitodoapp.data.Task
 
   @Delete
   fun delete(task: Task): Int
+
+  @Query("DELETE FROM tasks WHERE isCompleted = 'true'")
+  fun deleteCompleted(): Int
 }

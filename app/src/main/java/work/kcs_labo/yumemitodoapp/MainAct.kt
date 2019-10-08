@@ -1,9 +1,11 @@
 package work.kcs_labo.yumemitodoapp
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.main_act.*
@@ -40,8 +42,32 @@ class MainAct : AppCompatActivity(), MainNavigator {
     setupWidgets()
   }
 
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    val inflater: MenuInflater = menuInflater
+    inflater.inflate(R.menu.toolbar_menu, menu)
+    return true
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      R.id.delete_completed -> {
+        AlertDialog.Builder(this) // FragmentではActivityを取得して生成
+          .setMessage(resources.getString(R.string.delete_completed_msg))
+          .setPositiveButton("OK") { _, _ ->
+            obtainViewModel().deleteCompleted()
+          }
+          .setNegativeButton("NO") { _, _ -> }
+          .show()
+        true
+      }
+      else -> super.onOptionsItemSelected(item)
+    }
+  }
+
   private fun setupWidgets() {
     val viewModel = obtainViewModel()
+
+    setSupportActionBar(toolbar)
 
     add_btn.setOnClickListener {
       viewModel.addTask(new_task.text.toString())

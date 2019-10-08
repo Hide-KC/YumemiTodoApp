@@ -5,7 +5,7 @@ import work.kcs_labo.yumemitodoapp.data.source.local.TasksLocalDataSource
 
 class TasksRepository(
   private val tasksLocalDataSource: TasksLocalDataSource
-): TasksDataSource {
+) : TasksDataSource {
   override fun findAll(): List<Task> {
     return tasksLocalDataSource.findAll()
   }
@@ -38,12 +38,16 @@ class TasksRepository(
     return tasksLocalDataSource.delete(task)
   }
 
+  override fun deleteCompleted(): Int {
+    return tasksLocalDataSource.deleteCompleted()
+  }
+
   override fun deleteAll(): Int {
     return tasksLocalDataSource.deleteAll()
   }
 
   companion object {
-    private var INSTANCE : TasksRepository? = null
+    private var INSTANCE: TasksRepository? = null
     private val lock = Any()
 
     fun getInstance(localDataSource: TasksLocalDataSource): TasksRepository =
