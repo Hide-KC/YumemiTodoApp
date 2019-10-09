@@ -53,10 +53,10 @@ class MainAct : AppCompatActivity(), MainNavigator {
       R.id.delete_completed -> {
         AlertDialog.Builder(this) // FragmentではActivityを取得して生成
           .setMessage(resources.getString(R.string.delete_completed_msg))
-          .setPositiveButton("OK") { _, _ ->
+          .setPositiveButton(getString(android.R.string.ok)) { _, _ ->
             obtainViewModel().deleteCompleted()
           }
-          .setNegativeButton("NO") { _, _ -> }
+          .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> }
           .show()
         true
       }

@@ -1,7 +1,6 @@
 package work.kcs_labo.yumemitodoapp.util
 
 
-import android.graphics.Color
 import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox

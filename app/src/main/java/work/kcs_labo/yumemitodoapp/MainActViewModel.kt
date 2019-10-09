@@ -5,9 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import work.kcs_labo.yumemitodoapp.data.Task
 import work.kcs_labo.yumemitodoapp.data.source.TasksRepository
 import work.kcs_labo.yumemitodoapp.list.TaskModel
@@ -53,7 +51,7 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
   }
 
   private fun loadTasks() {
-    GlobalScope.launch(Dispatchers.IO) {
+    viewModelScope.launch(Dispatchers.IO) {
       val list = when {
         allBtnEnable.value == true -> repository.findAll()
         activeBtnEnable.value == true -> repository.findActive()
@@ -69,7 +67,7 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
       }
       taskModels.reverse()
 
-      viewModelScope.launch {
+      viewModelScope.launch(Dispatchers.Main) {
         taskModelsLiveData.value = taskModels
       }
     }
@@ -77,50 +75,40 @@ class MainActViewModel(app: Application, private val repository: TasksRepository
 
   fun addTask(taskName: String) {
     if (taskName.trim().isNotEmpty()) {
-      GlobalScope.launch {
-        withContext(Dispatchers.IO) {
-          val task = Task(0, taskName, false.toString())
-          repository.insert(task)
-          loadTasks()
-        }
+      viewModelScope.launch(Dispatchers.IO) {
+        val task = Task(0, taskName, false.toString())
+        repository.insert(task)
+        loadTasks()
       }
     }
   }
 
   fun deleteTask(id: Long) {
-    GlobalScope.launch {
-      withContext(Dispatchers.IO) {
-        val task = repository.find(id)
-        repository.delete(task)
-        loadTasks()
-      }
+    viewModelScope.launch(Dispatchers.IO) {
+      val task = repository.find(id)
+      repository.delete(task)
+      loadTasks()
     }
   }
 
   fun deleteCompleted() {
-    GlobalScope.launch {
-      withContext(Dispatchers.IO) {
-        repository.deleteCompleted()
-        loadTasks()
-      }
+    viewModelScope.launch(Dispatchers.IO) {
+      repository.deleteCompleted()
+      loadTasks()
     }
   }
 
   fun updateTask(task: Task) {
-    GlobalScope.launch {
-      withContext(Dispatchers.IO) {
-        repository.update(task)
-        loadTasks()
-      }
+    viewModelScope.launch(Dispatchers.IO) {
+      repository.update(task)
+      loadTasks()
     }
   }
 
   fun deleteAllTask() {
-    GlobalScope.launch {
-      withContext(Dispatchers.IO) {
-        repository.deleteAll()
-        loadTasks()
-      }
+    viewModelScope.launch(Dispatchers.IO) {
+      repository.deleteAll()
+      loadTasks()
     }
   }
 
